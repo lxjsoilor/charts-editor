@@ -1,0 +1,930 @@
+{
+  "chartConfig.legend.type": {
+    "label": "图例的类型。可选值：\n\n'plain'：普通图例。缺省就是普通图例。\n'scroll'：可滚动翻页的图例。当图例数量较多时可以使用。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。\n\n当使用 'scroll' 时，使用这些设置进行细节配置：\n\nlegend.scrollDataIndex\nlegend.pageButtonItemGap\nlegend.pageButtonGap\nlegend.pageButtonPosition\nlegend.pageFormatter\nlegend.pageIcons\nlegend.pageIconColor\nlegend.pageIconInactiveColor\nlegend.pageIconSize\nlegend.pageTextStyle\nlegend.animation\nlegend.animationDurationUpdate",
+    "type": "el-input",
+    "default": "",
+    "props": {
+      "options": [
+        {
+          "label": "plain",
+          "value": "plain"
+        },
+        {
+          "label": "scroll",
+          "value": "scroll"
+        }
+      ]
+    }
+  },
+  "string": "Select",
+  "chartConfig.legend.id": {
+    "label": "组件 ID。默认不指定。指定则可用于在 option 或者 API 中引用组件。",
+    "type": "el-input",
+    "default": ""
+  },
+  "chartConfig.legend.show": {
+    "label": "",
+    "type": "el-switch",
+    "default": "true"
+  },
+  "chartConfig.legend.zlevel": {
+    "label": "所有图形的 zlevel 值。\n\nzlevel用于 Canvas 分层，不同zlevel值的图形会放置在不同的 Canvas 中，Canvas 分层是一种常见的优化手段。我们可以把一些图形变化频繁（例如有动画）的组件设置成一个单独的zlevel。需要注意的是过多的 Canvas 会引起内存开销的增大，在手机端上需要谨慎使用以防崩溃。\n\nzlevel 大的 Canvas 会放在 zlevel 小的 Canvas 的上面。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.z": {
+    "label": "组件的所有图形的z值。控制图形的前后顺序。z值小的图形会被z值大的图形覆盖。\n\nz相比zlevel优先级更低，而且不会创建新的 Canvas。",
+    "type": "el-input-number",
+    "default": "2"
+  },
+  "chartConfig.legend.left": {
+    "label": "图例组件离容器左侧的距离。\n\nleft 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比，也可以是 'left', 'center', 'right'。\n\n如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.top": {
+    "label": "图例组件离容器上侧的距离。\n\ntop 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比，也可以是 'top', 'middle', 'bottom'。\n\n如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.right": {
+    "label": "图例组件离容器右侧的距离。\n\nright 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。\n\n默认自适应。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.bottom": {
+    "label": "图例组件离容器下侧的距离。\n\nbottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。\n\n默认自适应。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.width": {
+    "label": "图例组件的宽度。默认自适应。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.height": {
+    "label": "图例组件的高度。默认自适应。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.orient": {
+    "label": "图例列表的布局朝向。\n\n可选：\n\n'horizontal'\n'vertical'",
+    "type": "el-input",
+    "default": "horizontal",
+    "props": {
+      "options": [
+        {
+          "label": "horizontal",
+          "value": "horizontal"
+        },
+        {
+          "label": "vertical",
+          "value": "vertical"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.align": {
+    "label": "图例标记和文本的对齐。默认自动，根据组件的位置和 orient 决定，当组件的 left 值为 'right' 以及纵向布局（orient 为 'vertical'）的时候为右对齐，即为 'right'。\n\n可选：\n\n'auto'\n'left'\n'right'",
+    "type": "el-input",
+    "default": "auto",
+    "props": {
+      "options": [
+        {
+          "label": "auto",
+          "value": "auto"
+        },
+        {
+          "label": "left",
+          "value": "left"
+        },
+        {
+          "label": "right",
+          "value": "right"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.padding": {
+    "label": "图例内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距。\n\n使用示例：\n\n// 设置内边距为 5\npadding: 5\n// 设置上下的内边距为 5，左右的内边距为 10\npadding: [5, 10]\n// 分别设置四个方向的内边距\npadding: [\n    5,  // 上\n    10, // 右\n    5,  // 下\n    10, // 左\n]\n",
+    "type": "el-input-number",
+    "default": "5"
+  },
+  "chartConfig.legend.itemGap": {
+    "label": "图例每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。",
+    "type": "el-input-number",
+    "default": "10"
+  },
+  "chartConfig.legend.itemWidth": {
+    "label": "图例标记的图形宽度。",
+    "type": "el-input-number",
+    "default": "25"
+  },
+  "chartConfig.legend.itemHeight": {
+    "label": "图例标记的图形高度。",
+    "type": "el-input-number",
+    "default": "14"
+  },
+  "chartConfig.legend.symbolKeepAspect": {
+    "label": "如果图标（可能来自系列的 symbol 或用户自定义的 legend.data.icon）是 path:// 的形式，是否在缩放时保持该图形的长宽比。",
+    "type": "el-switch",
+    "default": "true"
+  },
+  "chartConfig.legend.formatter": {
+    "label": "用来格式化图例文本，支持字符串模板和回调函数两种形式。\n\n示例：\n\n// 使用字符串模板，模板变量为图例名称 {name}\nformatter: 'Legend {name}'\n// 使用回调函数\nformatter: function (name) {\n    return 'Legend ' + name;\n}\n",
+    "type": "el-input",
+    "default": ""
+  },
+  "chartConfig.legend.selectedMode": {
+    "label": "图例选择的模式，控制是否可以通过点击图例改变系列的显示状态。默认开启图例选择，可以设成 false 关闭。\n\n除此之外也可以设成 'single' 或者 'multiple' 使用单选或者多选模式。",
+    "type": "el-input",
+    "default": "true"
+  },
+  "chartConfig.legend.inactiveColor": {
+    "label": "图例关闭时的颜色。",
+    "type": "ColorPicker",
+    "default": "#ccc"
+  },
+  "chartConfig.legend.selected": {
+    "label": "图例选中状态表。\n\n示例：\n\nselected: {\n    // 选中'系列1'\n    '系列1': true,\n    // 不选中'系列2'\n    '系列2': false\n}\n",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle": {
+    "label": "图例的公用文本样式。",
+    "default": "#333"
+  },
+  "chartConfig.legend.textStyle.color": {
+    "label": "文字的颜色。",
+    "type": "ColorPicker",
+    "default": "#333"
+  },
+  "chartConfig.legend.textStyle.fontStyle": {
+    "label": "文字字体的风格。\n\n可选：\n\n'normal'\n'italic'\n'oblique'",
+    "type": "el-input",
+    "default": "normal",
+    "props": {
+      "options": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "italic",
+          "value": "italic"
+        },
+        {
+          "label": "oblique",
+          "value": "oblique"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.textStyle.fontWeight": {
+    "label": "文字字体的粗细。\n\n可选：\n\n'normal'\n'bold'\n'bolder'\n'lighter'\n100 | 200 | 300 | 400...",
+    "type": "el-input",
+    "default": "normal",
+    "props": {
+      "options": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "bold",
+          "value": "bold"
+        },
+        {
+          "label": "bolder",
+          "value": "bolder"
+        },
+        {
+          "label": "lighter",
+          "value": "lighter"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.textStyle.fontFamily": {
+    "label": "文字的字体系列。\n\n还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...",
+    "type": "el-input",
+    "default": "sans-serif"
+  },
+  "chartConfig.legend.textStyle.fontSize": {
+    "label": "文字的字体大小。",
+    "type": "el-input-number",
+    "default": "12"
+  },
+  "chartConfig.legend.textStyle.lineHeight": {
+    "label": "行高。\n\nrich 中如果没有设置 lineHeight，则会取父层级的 lineHeight。例如：\n\n{\n    lineHeight: 56,\n    rich: {\n        a: {\n            // 没有设置 `lineHeight`，则 `lineHeight` 为 56\n        }\n    }\n}\n",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.backgroundColor": {
+    "label": "文字块背景色。\n\n可以使用颜色值，例如：'#123234', 'red', 'rgba(0,23,11,0.3)'。\n\n也可以直接使用图片，例如：\n\nbackgroundColor: {\n    image: 'xxx/xxx.png'\n    // 这里可以是图片的 URL，\n    // 或者图片的 dataURI，\n    // 或者 HTMLImageElement 对象，\n    // 或者 HTMLCanvasElement 对象。\n}\n\n\n当使用图片的时候，可以使用 width 或 height 指定高宽，也可以不指定自适应。",
+    "type": "el-input",
+    "default": "transparent"
+  },
+  "chartConfig.legend.textStyle.borderColor": {
+    "label": "文字块边框颜色。",
+    "type": "ColorPicker",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.borderWidth": {
+    "label": "文字块边框宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.borderRadius": {
+    "label": "文字块的圆角。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.padding": {
+    "label": "文字块的内边距。例如：\n\npadding: [3, 4, 5, 6]：表示 [上, 右, 下, 左] 的边距。\npadding: 4：表示 padding: [4, 4, 4, 4]。\npadding: [3, 4]：表示 padding: [3, 4, 3, 4]。\n\n注意，文字块的 width 和 height 指定的是内容高宽，不包含 padding。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "number": "Select",
+  "chartConfig.legend.textStyle.shadowColor": {
+    "label": "文字块的背景阴影颜色。",
+    "type": "ColorPicker",
+    "default": "transparent"
+  },
+  "chartConfig.legend.textStyle.shadowBlur": {
+    "label": "文字块的背景阴影长度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.shadowOffsetX": {
+    "label": "文字块的背景阴影 X 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.shadowOffsetY": {
+    "label": "文字块的背景阴影 Y 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.width": {
+    "label": "文本显示宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.height": {
+    "label": "文本显示高度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.textBorderColor": {
+    "label": "文字本身的描边颜色。",
+    "type": "ColorPicker",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.textBorderWidth": {
+    "label": "文字本身的描边宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.textShadowColor": {
+    "label": "文字本身的阴影颜色。",
+    "type": "ColorPicker",
+    "default": "transparent"
+  },
+  "chartConfig.legend.textStyle.textShadowBlur": {
+    "label": "文字本身的阴影长度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.textShadowOffsetX": {
+    "label": "文字本身的阴影 X 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.textShadowOffsetY": {
+    "label": "文字本身的阴影 Y 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.textStyle.overflow": {
+    "label": "文字超出宽度是否截断或者换行。配置width时有效\n\n'truncate' 截断，并在末尾显示ellipsis配置的文本，默认为...\n'break' 换行\n'breakAll' 换行，跟'break'不同的是，在英语等拉丁文中，'breakAll'还会强制单词内换行",
+    "type": "el-input",
+    "default": "none",
+    "props": {
+      "options": [
+        {
+          "label": "truncate",
+          "value": "truncate"
+        },
+        {
+          "label": "break",
+          "value": "break"
+        },
+        {
+          "label": "breakAll",
+          "value": "breakAll"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.textStyle.ellipsis": {
+    "label": "在overflow配置为'truncate'的时候，可以通过该属性配置末尾显示的文本。",
+    "type": "el-input",
+    "default": "..."
+  },
+  "chartConfig.legend.textStyle.lineOverflow": {
+    "label": "文本超出高度部分是否截断，配置height时有效。\n\n'truncate' 在文本行数超出高度部分截断。",
+    "type": "el-input",
+    "default": "none",
+    "props": {
+      "options": [
+        {
+          "label": "truncate",
+          "value": "truncate"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.textStyle.rich": {
+    "label": "在 rich 里面，可以自定义富文本样式。利用富文本样式，可以在标签中做出非常丰富的效果。\n\n例如：\n\nlabel: {\n    // 在文本中，可以对部分文本采用 rich 中定义样式。\n    // 这里需要在文本中使用标记符号：\n    // `{styleName|text content text content}` 标记样式名。\n    // 注意，换行仍是使用 '\\n'。\n    formatter: [\n        '{a|这段文本采用样式a}',\n        '{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'\n    ].join('\\n'),\n\n    rich: {\n        a: {\n            color: 'red',\n            lineHeight: 10\n        },\n        b: {\n            backgroundColor: {\n                image: 'xxx/xxx.jpg'\n            },\n            height: 40\n        },\n        x: {\n            fontSize: 18,\n            fontFamily: 'Microsoft YaHei',\n            borderColor: '#449933',\n            borderRadius: 4\n        },\n        ...\n    }\n}\n\n\n详情参见教程：富文本标签",
+    "default": ""
+  },
+  "chartConfig.legend.tooltip": {
+    "label": "图例的 tooltip 配置，配置项同 tooltip。默认不显示，可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip，如下示例：\n\nlegend: {\n    formatter: function (name) {\n        return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…');\n    },\n    tooltip: {\n        show: true\n    }\n}\n",
+    "default": ""
+  },
+  "chartConfig.legend.icon": {
+    "label": "图例项的 icon。\n\nECharts 提供的标记类型包括\n\n'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'\n\n可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI。\n\nURL 为图片链接例如：\n\n'image://http://xxx.xxx.xxx/a/b.png'\n\n\nURL 为 dataURI 例如：\n\n'image://data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7'\n\n\n可以通过 'path://' 将图标设置为任意的矢量路径。这种方式相比于使用图片的方式，不用担心因为缩放而产生锯齿或模糊，而且可以设置为任意颜色。路径图形会自适应调整为合适的大小。路径的格式参见 SVG PathData。可以从 Adobe Illustrator 等工具编辑导出。\n\n例如：\n\n'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M30.9,3.5C17.6,3.5,6.8,14.4,6.8,27.6c0,13.3,10.8,24.1,24.101,24.1C44.2,51.7,55,40.9,55,27.6C54.9,14.4,44.1,3.5,30.9,3.5z M36.9,35.8c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H36c0.5,0,0.9,0.4,0.9,1V35.8z M27.8,35.8 c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H27c0.5,0,0.9,0.4,0.9,1L27.8,35.8L27.8,35.8z'\n",
+    "type": "el-input",
+    "default": ""
+  },
+  "chartConfig.legend.data": {
+    "label": "图例的数据数组。数组项通常为一个字符串，每一项代表一个系列的 name（如果是饼图，也可以是饼图单个数据的 name）。图例组件会自动根据对应系列的图形标记（symbol）来绘制自己的颜色和标记，特殊字符串 ''（空字符串）或者 '\\n'（换行字符串）用于图例的换行。\n\n如果 data 没有被指定，会自动从当前系列中获取。多数系列会取自 series.name 或者 series.encode 的 seriesName 所指定的维度。如 饼图 and 漏斗图 等会取自 series.data 中的 name。\n\n如果要设置单独一项的样式，也可以把该项写成配置项对象。此时必须使用 name 属性对应表示系列的 name。\n\n示例\n\ndata: [{\n    name: '系列1',\n    // 强制设置图形为圆。\n    icon: 'circle',\n    // 设置文本为红色\n    textStyle: {\n        color: 'red'\n    }\n}]\n",
+    "default": ""
+  },
+  "chartConfig.legend.backgroundColor": {
+    "label": "图例背景色，默认透明。\n\n颜色可以使用 RGB 表示，比如 'rgb(128, 128, 128)' ，如果想要加上 alpha 通道，可以使用 RGBA，比如 'rgba(128, 128, 128, 0.5)'，也可以使用十六进制格式，比如 '#ccc'",
+    "type": "ColorPicker",
+    "default": "transparent"
+  },
+  "chartConfig.legend.borderColor": {
+    "label": "图例的边框颜色。支持的颜色格式同 backgroundColor。",
+    "type": "ColorPicker",
+    "default": "#ccc"
+  },
+  "chartConfig.legend.borderWidth": {
+    "label": "图例的边框线宽。",
+    "type": "el-input-number",
+    "default": "1"
+  },
+  "chartConfig.legend.borderRadius": {
+    "label": "圆角半径，单位px，支持传入数组分别指定 4 个圆角半径。 如:\n\nborderRadius: 5, // 统一设置四个角的圆角大小\nborderRadius: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）\n",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.shadowBlur": {
+    "label": "图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。\n\n示例：\n\n{\n    shadowColor: 'rgba(0, 0, 0, 0.5)',\n    shadowBlur: 10\n}\n\n\n注意：此配置项生效的前提是，设置了 show: true 以及值不为 tranparent 的背景色 backgroundColor。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.shadowColor": {
+    "label": "阴影颜色。支持的格式同color。\n\n注意：此配置项生效的前提是，设置了 show: true。",
+    "type": "ColorPicker",
+    "default": ""
+  },
+  "chartConfig.legend.shadowOffsetX": {
+    "label": "阴影水平方向上的偏移距离。\n\n注意：此配置项生效的前提是，设置了 show: true。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.shadowOffsetY": {
+    "label": "阴影垂直方向上的偏移距离。\n\n注意：此配置项生效的前提是，设置了 show: true。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.scrollDataIndex": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例当前最左上显示项的 dataIndex。\n\nsetOption 时指定此项的话，可决定当前图例滚动到哪里。\n\n但是，如果仅仅想改变图例翻页，一般并不调用 setOption（因为这太重量了），仅仅使用 action legendScroll 即可。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageButtonItemGap": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例控制块中，按钮和页信息之间的间隔。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input-number",
+    "default": "5"
+  },
+  "chartConfig.legend.pageButtonGap": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例控制块和图例项之间的间隔。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageButtonPosition": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例控制块的位置。可选值为：\n\n'start'：控制块在左或上。\n'end'：控制块在右或下。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input",
+    "default": "end",
+    "props": {
+      "options": [
+        {
+          "label": "start",
+          "value": "start"
+        },
+        {
+          "label": "end",
+          "value": "end"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.pageFormatter": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例控制块中，页信息的显示格式。默认为 '{current}/{total}'，其中 {current} 是当前页号（从 1 开始计数），{total} 是总页数。\n\n如果 pageFormatter 使用函数，须返回字符串，参数为：\n\n{\n    current: number\n    total: number\n}\n\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input",
+    "default": "{current}/{total}"
+  },
+  "chartConfig.legend.pageIcons": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例控制块的图标。",
+    "default": ""
+  },
+  "chartConfig.legend.pageIcons.horizontal": {
+    "label": "legend.orient 为 'horizontal' 时的翻页按钮图标。\n\n是一个数组，表示 [previous page button, next page button]。默认值为 ['M0,0L12,-10L12,10z', 'M0,0L-12,-10L-12,10z']，。\n\n数组中每项，\n\n可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI。\n\nURL 为图片链接例如：\n\n'image://http://xxx.xxx.xxx/a/b.png'\n\n\nURL 为 dataURI 例如：\n\n'image://data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7'\n\n\n可以通过 'path://' 将图标设置为任意的矢量路径。这种方式相比于使用图片的方式，不用担心因为缩放而产生锯齿或模糊，而且可以设置为任意颜色。路径图形会自适应调整为合适的大小。路径的格式参见 SVG PathData。可以从 Adobe Illustrator 等工具编辑导出。\n\n例如：\n\n'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M30.9,3.5C17.6,3.5,6.8,14.4,6.8,27.6c0,13.3,10.8,24.1,24.101,24.1C44.2,51.7,55,40.9,55,27.6C54.9,14.4,44.1,3.5,30.9,3.5z M36.9,35.8c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H36c0.5,0,0.9,0.4,0.9,1V35.8z M27.8,35.8 c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H27c0.5,0,0.9,0.4,0.9,1L27.8,35.8L27.8,35.8z'\n\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "default": ""
+  },
+  "chartConfig.legend.pageIcons.vertical": {
+    "label": "legend.orient 为 'vertical' 时的翻页按钮图标。\n\n是一个数组，表示 [previous page button, next page button]。默认值为 ['M0,0L20,0L10,-20z', 'M0,0L20,0L10,20z']，。\n\n数组中每项，\n\n可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI。\n\nURL 为图片链接例如：\n\n'image://http://xxx.xxx.xxx/a/b.png'\n\n\nURL 为 dataURI 例如：\n\n'image://data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7'\n\n\n可以通过 'path://' 将图标设置为任意的矢量路径。这种方式相比于使用图片的方式，不用担心因为缩放而产生锯齿或模糊，而且可以设置为任意颜色。路径图形会自适应调整为合适的大小。路径的格式参见 SVG PathData。可以从 Adobe Illustrator 等工具编辑导出。\n\n例如：\n\n'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M30.9,3.5C17.6,3.5,6.8,14.4,6.8,27.6c0,13.3,10.8,24.1,24.101,24.1C44.2,51.7,55,40.9,55,27.6C54.9,14.4,44.1,3.5,30.9,3.5z M36.9,35.8c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H36c0.5,0,0.9,0.4,0.9,1V35.8z M27.8,35.8 c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H27c0.5,0,0.9,0.4,0.9,1L27.8,35.8L27.8,35.8z'\n\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "default": ""
+  },
+  "chartConfig.legend.pageIconColor": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n翻页按钮的颜色。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input",
+    "default": "#2f4554"
+  },
+  "chartConfig.legend.pageIconInactiveColor": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n翻页按钮不激活时（即翻页到头时）的颜色。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input",
+    "default": "#aaa"
+  },
+  "chartConfig.legend.pageIconSize": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n翻页按钮的大小。可以是数字，也可以是数组，如 [10, 3]，表示 [宽，高]。\n\n参见 滚动图例（垂直） 或 滚动图例（水平）。",
+    "type": "el-input-number",
+    "default": "15"
+  },
+  "chartConfig.legend.pageTextStyle": {
+    "label": "legend.type 为 'scroll' 时有效。\n\n图例页信息的文字样式。",
+    "default": "#333"
+  },
+  "chartConfig.legend.pageTextStyle.color": {
+    "label": "文字的颜色。",
+    "type": "ColorPicker",
+    "default": "#333"
+  },
+  "chartConfig.legend.pageTextStyle.fontStyle": {
+    "label": "文字字体的风格。\n\n可选：\n\n'normal'\n'italic'\n'oblique'",
+    "type": "el-input",
+    "default": "normal",
+    "props": {
+      "options": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "italic",
+          "value": "italic"
+        },
+        {
+          "label": "oblique",
+          "value": "oblique"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.pageTextStyle.fontWeight": {
+    "label": "文字字体的粗细。\n\n可选：\n\n'normal'\n'bold'\n'bolder'\n'lighter'\n100 | 200 | 300 | 400...",
+    "type": "el-input",
+    "default": "normal",
+    "props": {
+      "options": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "bold",
+          "value": "bold"
+        },
+        {
+          "label": "bolder",
+          "value": "bolder"
+        },
+        {
+          "label": "lighter",
+          "value": "lighter"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.pageTextStyle.fontFamily": {
+    "label": "文字的字体系列。\n\n还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...",
+    "type": "el-input",
+    "default": "sans-serif"
+  },
+  "chartConfig.legend.pageTextStyle.fontSize": {
+    "label": "文字的字体大小。",
+    "type": "el-input-number",
+    "default": "12"
+  },
+  "chartConfig.legend.pageTextStyle.lineHeight": {
+    "label": "行高。\n\nrich 中如果没有设置 lineHeight，则会取父层级的 lineHeight。例如：\n\n{\n    lineHeight: 56,\n    rich: {\n        a: {\n            // 没有设置 `lineHeight`，则 `lineHeight` 为 56\n        }\n    }\n}\n",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.width": {
+    "label": "文本显示宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.height": {
+    "label": "文本显示高度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.textBorderColor": {
+    "label": "文字本身的描边颜色。",
+    "type": "ColorPicker",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.textBorderWidth": {
+    "label": "文字本身的描边宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.textShadowColor": {
+    "label": "文字本身的阴影颜色。",
+    "type": "ColorPicker",
+    "default": "transparent"
+  },
+  "chartConfig.legend.pageTextStyle.textShadowBlur": {
+    "label": "文字本身的阴影长度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.textShadowOffsetX": {
+    "label": "文字本身的阴影 X 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.textShadowOffsetY": {
+    "label": "文字本身的阴影 Y 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.pageTextStyle.overflow": {
+    "label": "文字超出宽度是否截断或者换行。配置width时有效\n\n'truncate' 截断，并在末尾显示ellipsis配置的文本，默认为...\n'break' 换行\n'breakAll' 换行，跟'break'不同的是，在英语等拉丁文中，'breakAll'还会强制单词内换行",
+    "type": "el-input",
+    "default": "none",
+    "props": {
+      "options": [
+        {
+          "label": "truncate",
+          "value": "truncate"
+        },
+        {
+          "label": "break",
+          "value": "break"
+        },
+        {
+          "label": "breakAll",
+          "value": "breakAll"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.pageTextStyle.ellipsis": {
+    "label": "在overflow配置为'truncate'的时候，可以通过该属性配置末尾显示的文本。",
+    "type": "el-input",
+    "default": "..."
+  },
+  "chartConfig.legend.pageTextStyle.lineOverflow": {
+    "label": "文本超出高度部分是否截断，配置height时有效。\n\n'truncate' 在文本行数超出高度部分截断。",
+    "type": "el-input",
+    "default": "none",
+    "props": {
+      "options": [
+        {
+          "label": "truncate",
+          "value": "truncate"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.animation": {
+    "label": "图例翻页是否使用动画。",
+    "type": "el-switch",
+    "default": ""
+  },
+  "chartConfig.legend.animationDurationUpdate": {
+    "label": "图例翻页时的动画时长。",
+    "type": "el-input-number",
+    "default": "800"
+  },
+  "chartConfig.legend.emphasis": {
+    "label": "",
+    "default": ""
+  },
+  "chartConfig.legend.emphasis.selectorLabel": {
+    "label": "从 v4.4.0 开始支持",
+    "default": ""
+  },
+  "chartConfig.legend.selector": {
+    "label": "从 v4.4.0 开始支持\n\n图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。\n\n使用方式如下：\n\nselector: [\n    {\n        type: 'all or inverse',\n        // 可以是任意你喜欢的 title\n        title: '全选'\n    },\n    {\n        type: 'inverse',\n        title: '反选'\n    }\n]\n\n// 或\nselector: true\n\n// 或\nselector: ['all', 'inverse']\n",
+    "type": "el-switch",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel": {
+    "label": "从 v4.4.0 开始支持\n\n选择器按钮的文本标签样式，默认显示。",
+    "default": "true"
+  },
+  "chartConfig.legend.selectorLabel.show": {
+    "label": "是否显示标签。",
+    "type": "el-switch",
+    "default": "true"
+  },
+  "chartConfig.legend.selectorLabel.distance": {
+    "label": "距离图形元素的距离。",
+    "type": "el-input-number",
+    "default": "5"
+  },
+  "chartConfig.legend.selectorLabel.rotate": {
+    "label": "标签旋转。从 -90 度到 90 度。正值是逆时针。\n\n参见：label rotation。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.offset": {
+    "label": "是否对文字进行偏移。默认不偏移。例如：[30, 40] 表示文字在横向上偏移 30，纵向上偏移 40。",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.color": {
+    "label": "文字的颜色。\n\n如果设置为 'inherit'，则为视觉映射得到的颜色，如系列色。",
+    "type": "ColorPicker",
+    "default": "\"#fff\""
+  },
+  "chartConfig.legend.selectorLabel.fontStyle": {
+    "label": "文字字体的风格。\n\n可选：\n\n'normal'\n'italic'\n'oblique'",
+    "type": "el-input",
+    "default": "normal",
+    "props": {
+      "options": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "italic",
+          "value": "italic"
+        },
+        {
+          "label": "oblique",
+          "value": "oblique"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.fontWeight": {
+    "label": "文字字体的粗细。\n\n可选：\n\n'normal'\n'bold'\n'bolder'\n'lighter'\n100 | 200 | 300 | 400...",
+    "type": "el-input",
+    "default": "normal",
+    "props": {
+      "options": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "bold",
+          "value": "bold"
+        },
+        {
+          "label": "bolder",
+          "value": "bolder"
+        },
+        {
+          "label": "lighter",
+          "value": "lighter"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.fontFamily": {
+    "label": "文字的字体系列。\n\n还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...",
+    "type": "el-input",
+    "default": "sans-serif"
+  },
+  "chartConfig.legend.selectorLabel.fontSize": {
+    "label": "文字的字体大小。",
+    "type": "el-input-number",
+    "default": "12"
+  },
+  "chartConfig.legend.selectorLabel.align": {
+    "label": "文字水平对齐方式，默认自动。\n\n可选：\n\n'left'\n'center'\n'right'\n\nrich 中如果没有设置 align，则会取父层级的 align。例如：\n\n{\n    align: right,\n    rich: {\n        a: {\n            // 没有设置 `align`，则 `align` 为 right\n        }\n    }\n}\n",
+    "type": "el-input",
+    "default": "",
+    "props": {
+      "options": [
+        {
+          "label": "left",
+          "value": "left"
+        },
+        {
+          "label": "center",
+          "value": "center"
+        },
+        {
+          "label": "right",
+          "value": "right"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.verticalAlign": {
+    "label": "文字垂直对齐方式，默认自动。\n\n可选：\n\n'top'\n'middle'\n'bottom'\n\nrich 中如果没有设置 verticalAlign，则会取父层级的 verticalAlign。例如：\n\n{\n    verticalAlign: bottom,\n    rich: {\n        a: {\n            // 没有设置 `verticalAlign`，则 `verticalAlign` 为 bottom\n        }\n    }\n}\n",
+    "type": "el-input",
+    "default": "",
+    "props": {
+      "options": [
+        {
+          "label": "top",
+          "value": "top"
+        },
+        {
+          "label": "middle",
+          "value": "middle"
+        },
+        {
+          "label": "bottom",
+          "value": "bottom"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.lineHeight": {
+    "label": "行高。\n\nrich 中如果没有设置 lineHeight，则会取父层级的 lineHeight。例如：\n\n{\n    lineHeight: 56,\n    rich: {\n        a: {\n            // 没有设置 `lineHeight`，则 `lineHeight` 为 56\n        }\n    }\n}\n",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.backgroundColor": {
+    "label": "文字块背景色。\n\n可以使用颜色值，例如：'#123234', 'red', 'rgba(0,23,11,0.3)'。\n\n也可以直接使用图片，例如：\n\nbackgroundColor: {\n    image: 'xxx/xxx.png'\n    // 这里可以是图片的 URL，\n    // 或者图片的 dataURI，\n    // 或者 HTMLImageElement 对象，\n    // 或者 HTMLCanvasElement 对象。\n}\n\n\n当使用图片的时候，可以使用 width 或 height 指定高宽，也可以不指定自适应。\n\n如果设置为 'inherit'，则为视觉映射得到的颜色，如系列色。",
+    "type": "el-input",
+    "default": "transparent"
+  },
+  "chartConfig.legend.selectorLabel.borderColor": {
+    "label": "文字块边框颜色。\n\n如果设置为 'inherit'，则为视觉映射得到的颜色，如系列色。",
+    "type": "ColorPicker",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.borderWidth": {
+    "label": "文字块边框宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.borderRadius": {
+    "label": "文字块的圆角。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.padding": {
+    "label": "文字块的内边距。例如：\n\npadding: [3, 4, 5, 6]：表示 [上, 右, 下, 左] 的边距。\npadding: 4：表示 padding: [4, 4, 4, 4]。\npadding: [3, 4]：表示 padding: [3, 4, 3, 4]。\n\n注意，文字块的 width 和 height 指定的是内容高宽，不包含 padding。",
+    "type": "el-input-number",
+    "default": "",
+    "props": {
+      "options": [
+        {
+          "label": "padding:",
+          "value": "padding:"
+        },
+        {
+          "label": "padding:",
+          "value": "padding:"
+        },
+        {
+          "label": "padding:",
+          "value": "padding:"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.shadowColor": {
+    "label": "文字块的背景阴影颜色。",
+    "type": "ColorPicker",
+    "default": "transparent"
+  },
+  "chartConfig.legend.selectorLabel.shadowBlur": {
+    "label": "文字块的背景阴影长度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.shadowOffsetX": {
+    "label": "文字块的背景阴影 X 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.shadowOffsetY": {
+    "label": "文字块的背景阴影 Y 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.width": {
+    "label": "文本显示宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.height": {
+    "label": "文本显示高度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.textBorderColor": {
+    "label": "文字本身的描边颜色。\n\n如果设置为 'inherit'，则为视觉映射得到的颜色，如系列色。",
+    "type": "ColorPicker",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.textBorderWidth": {
+    "label": "文字本身的描边宽度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.textShadowColor": {
+    "label": "文字本身的阴影颜色。",
+    "type": "ColorPicker",
+    "default": "transparent"
+  },
+  "chartConfig.legend.selectorLabel.textShadowBlur": {
+    "label": "文字本身的阴影长度。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.textShadowOffsetX": {
+    "label": "文字本身的阴影 X 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.textShadowOffsetY": {
+    "label": "文字本身的阴影 Y 偏移。",
+    "type": "el-input-number",
+    "default": ""
+  },
+  "chartConfig.legend.selectorLabel.overflow": {
+    "label": "文字超出宽度是否截断或者换行。配置width时有效\n\n'truncate' 截断，并在末尾显示ellipsis配置的文本，默认为...\n'break' 换行\n'breakAll' 换行，跟'break'不同的是，在英语等拉丁文中，'breakAll'还会强制单词内换行",
+    "type": "el-input",
+    "default": "none",
+    "props": {
+      "options": [
+        {
+          "label": "truncate",
+          "value": "truncate"
+        },
+        {
+          "label": "break",
+          "value": "break"
+        },
+        {
+          "label": "breakAll",
+          "value": "breakAll"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.ellipsis": {
+    "label": "在overflow配置为'truncate'的时候，可以通过该属性配置末尾显示的文本。",
+    "type": "el-input",
+    "default": "..."
+  },
+  "chartConfig.legend.selectorLabel.lineOverflow": {
+    "label": "文本超出高度部分是否截断，配置height时有效。\n\n'truncate' 在文本行数超出高度部分截断。",
+    "type": "el-input",
+    "default": "none",
+    "props": {
+      "options": [
+        {
+          "label": "truncate",
+          "value": "truncate"
+        }
+      ]
+    }
+  },
+  "chartConfig.legend.selectorLabel.rich": {
+    "label": "在 rich 里面，可以自定义富文本样式。利用富文本样式，可以在标签中做出非常丰富的效果。\n\n例如：\n\nlabel: {\n    // 在文本中，可以对部分文本采用 rich 中定义样式。\n    // 这里需要在文本中使用标记符号：\n    // `{styleName|text content text content}` 标记样式名。\n    // 注意，换行仍是使用 '\\n'。\n    formatter: [\n        '{a|这段文本采用样式a}',\n        '{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'\n    ].join('\\n'),\n\n    rich: {\n        a: {\n            color: 'red',\n            lineHeight: 10\n        },\n        b: {\n            backgroundColor: {\n                image: 'xxx/xxx.jpg'\n            },\n            height: 40\n        },\n        x: {\n            fontSize: 18,\n            fontFamily: 'Microsoft YaHei',\n            borderColor: '#449933',\n            borderRadius: 4\n        },\n        ...\n    }\n}\n\n\n详情参见教程：富文本标签",
+    "default": ""
+  },
+  "chartConfig.legend.selectorPosition": {
+    "label": "从 v4.4.0 开始支持\n\n选择器的位置，可以放在图例的尾部或者头部，对应的值分别为 'end' 和 'start'。默认情况下，图例横向布局的时候，选择器放在图例的尾部；图例纵向布局的时候，选择器放在图例的头部。",
+    "type": "el-input",
+    "default": "auto"
+  },
+  "chartConfig.legend.selectorItemGap": {
+    "label": "从 v4.4.0 开始支持\n\n选择器按钮之间的间隔。",
+    "type": "el-input-number",
+    "default": "7"
+  },
+  "chartConfig.legend.selectorButtonGap": {
+    "label": "从 v4.4.0 开始支持\n\n选择器按钮与图例组件之间的间隔。",
+    "type": "el-input-number",
+    "default": "10"
+  }
+}
